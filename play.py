@@ -1,4 +1,4 @@
-from dungeon.dungeon import Dungeon
+from dungeon import Dungeon
 
 dungeon_data = {
     'entry': 'Hall',
@@ -58,6 +58,4 @@ dungeon_data = {
     }
 }
 
-
-dungeon = Dungeon(dungeon_data)
-dungeon.run()
+Dungeon(dungeon_data).run()

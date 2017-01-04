@@ -1,6 +1,6 @@
 from textwrap import fill
-from dungeon.formating import color
-
+from room import Room
+from color import color
 
 class Dungeon(object):
 
@@ -38,29 +38,3 @@ class Dungeon(object):
                 print('There is no such destination, ' + color.PURPLE + choice + color.END)
         print("\n" * 100)
         print(color.RED + color.BOLD + self.rooms[self.exit].read_room()['description'] + color.END)
-
-
-class Room(object):
-
-    def __init__(self, description, name, doors=None):
-        self.doors = {}
-        self.name = name
-        self.description = description
-        if doors:
-            for key, door in doors.items():
-                self.doors[key] = Door(door)
-
-    def read_room(self):
-        return {
-            'description': self.description,
-            'doors': self.doors
-        }
-
-
-class Door(object):
-
-    def __init__(self, data):
-        self.data = data
-
-    def read_door(self):
-        return self.data

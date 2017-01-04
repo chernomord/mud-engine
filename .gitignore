@@ -1,2 +1,4 @@
-/Dungeon.egg-info
-/.idea
+Dungeon.egg-info
+.idea
+*.pyc
+venv
