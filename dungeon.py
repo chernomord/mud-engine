@@ -15,6 +15,12 @@ class Dungeon(object):
     def read_current_room(self):
         return self.rooms[self.current_loc].read_room()
 
+    def check_door(self, looking_for, doors):
+        for room_key in doors.keys():
+            if room_key.lower() == looking_for.lower():
+                return room_key
+        return False
+
     def run(self):
         while self.current_loc != self.exit:
             print("\n"*100)
@@ -32,9 +38,11 @@ class Dungeon(object):
                 item = '- ' + color.CYAN + target + color.END + ': ' + descr
                 print(fill(item, 75))
             choice = input('Where to go? > ')
-            if choice in current_room['doors']:
-                self.current_loc = choice
+            # Проверяем есть ли дверь с введенным именем case insensitive
+            if self.check_door(choice, current_room['doors']):
+                self.current_loc = self.check_door(choice, current_room['doors'])
             else:
                 print('There is no such destination, ' + color.PURPLE + choice + color.END)
+
         print("\n" * 100)
         print(color.RED + color.BOLD + self.rooms[self.exit].read_room()['description'] + color.END)
