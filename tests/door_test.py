@@ -1,6 +1,7 @@
 from nose.tools import *
 from door import Door
 
+
 def test_door():
     door_data = {
         'lead_to': 'Hall',
